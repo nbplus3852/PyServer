@@ -16,7 +16,6 @@ PyServer 是一个轻量且高效的基于 Python 的 Web 服务器，旨在处�
 ```bash
 git clone https://github.com/nbplus3852/PyServer.git
 cd PyServer
-pip install -r requirements.txt
 ```
 
 ## 使用
