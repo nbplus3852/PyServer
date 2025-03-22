@@ -30,15 +30,15 @@ def generate_response(request_map, global_settings):
                 line = line.lstrip().strip()
                 response += line
     except FileNotFoundError:
-        print(f"page{request_map['path']} not found")
+        print(f"找不到 page{request_map['path']}")
         return response.format(
             state="404", date=datetime.datetime.now(), server=global_settings["server"]
         )
-    except KeyError:
-        print("KeyError")
-        return response.format(
-            state="404", date=datetime.datetime.now(), server=global_settings["server"]
-        )
+    # except KeyError:
+    #     print("KeyError")
+    #     return response.format(
+    #         state="404", date=datetime.datetime.now(), server=global_settings["server"]
+    #     )
     md_label_left = response.find("<markdown>")
     md_label_right = response.find("</markdown>")
     if md_label_left != -1 and md_label_right != -1:
@@ -98,15 +98,16 @@ def main():
         with open("settings.json", "r", encoding="utf-8") as settings_file:
             global_settings = json.load(settings_file)
     except FileNotFoundError:
-        print("settings.json not found")
+        print("找不到 settings.json")
         exit()
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server_socket.bind((global_settings["ip"], global_settings["port"]))
     server_socket.listen(1024)
+    print(f"服务器启动成功，监听 {global_settings['ip']}:{global_settings['port']}")
 
     while True:
         client_socket, client_address = server_socket.accept()
-        print(f"Connection from {client_address}")
+        print(f"连接 {client_address}")
         threading.Thread(
             target=sent_response, args=(client_socket, client_address, global_settings)
         ).start()
