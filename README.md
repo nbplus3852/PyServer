@@ -1,6 +1,6 @@
 # PyServer
 
-PyServer 是一个轻量且高效的基于 Python 的 Web 服务器，旨在处理 HTTP 请求并提供 Web 内容。
+PyServer 是一个轻量且高效的基于 Python 的 Web 服务器，旨在处理 HTTP 请求并提供 Web 静态页面。
 
 ## 特性
 
@@ -15,25 +15,26 @@ PyServer 是一个轻量且高效的基于 Python 的 Web 服务器，旨在处�
 
 ```bash
 git clone https://github.com/nbplus3852/PyServer.git
-cd PyServer
 ```
 
 ## 使用
 
+目前仅在Python3.13版本中通过测试
+
 要启动服务器，请运行以下命令：
 
 ```bash
-python server.py
+python main.py
 ```
 
-默认情况下，服务器将运行在 `http://localhost:8000`。您可以通过修改 `config.py` 文件来自定义主机和端口。
+默认情况下，服务器将运行在 `http://127.0.0.1:8080`。您可以通过修改 `settings.json` 文件来自定义主机和端口。
 
 ## 配置
 
 服务器配置可以在 `settings.json` 文件中自定义。以下是一些可用的选项：
 
-- `HOST`: 绑定服务器的主机名（默认值：`localhost`）
-- `PORT`: 绑定服务器的端口号（默认值：`8000`）
+- `HOST`: 绑定服务器的主机名（默认值：`127.0.0.1`）
+- `PORT`: 绑定服务器的端口号（默认值：`8080`）
 
 ## 贡献
 
@@ -45,4 +46,4 @@ python server.py
 
 ## 联系
 
-如有任何问题或咨询，请联系 [nbplus3852@outlook.com]。
+如有任何问题或咨询，请联系 nbplus3852@outlook.com。

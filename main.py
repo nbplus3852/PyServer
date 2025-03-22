@@ -101,9 +101,9 @@ def main():
         print("找不到 settings.json")
         exit()
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_socket.bind((global_settings["ip"], global_settings["port"]))
+    server_socket.bind((global_settings["host"], global_settings["port"]))
     server_socket.listen(1024)
-    print(f"服务器启动成功，监听 {global_settings['ip']}:{global_settings['port']}")
+    print(f"服务器启动成功，监听 http://{global_settings['host']}:{global_settings['port']}")
 
     while True:
         client_socket, client_address = server_socket.accept()
